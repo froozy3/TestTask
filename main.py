@@ -23,9 +23,7 @@ finnhub_client = finnhub.Client(api_key=os.getenv("FINN_API_KEY"))
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "HI! You can use 2 functions like: get weather by city and get price by company from NASDAQ."
-    )
+    await update.message.reply_text("Привет! 2 варинта: Киев или BTC.")
 
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -78,7 +76,22 @@ def log_to_sheet(message: str, user: str):
         "https://spreadsheets.google.com/feeds",
         "https://www.googleapis.com/auth/drive",
     ]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
+
+    creds_dict = {
+        "type": "service_account",
+        "project_id": "total-now-461220-q5",
+        "private_key_id": os.getenv("PRIVATE_KEY_ID"),
+        "private_key": os.getenv("PRIVATE_KEY").replace("\\n", "\n"),
+        "client_email": "sheets-writer@total-now-461220-q5.iam.gserviceaccount.com",
+        "client_id": "107179566616802042151",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sheets-writer%40total-now-461220-q5.iam.gserviceaccount.com",
+        "universe_domain": "googleapis.com",
+    }
+
+    creds = ServiceAccountCredentials.from_json_keyfile_name(creds_dict, scope)
     client = gspread.authorize(creds)
 
     sheet = client.open("bot_logs").sheet1
