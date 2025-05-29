@@ -24,7 +24,11 @@ finnhub_client = finnhub.Client(api_key=os.getenv("FINN_API_KEY"))
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Привет! 2 варинта: город(Kyiv, Berdyansk, Donetsk, Mariupol) или название компании капсом(AAPL,MSFT,AMZN)."
+        "Привет! 👋\n\n"
+        "Ты можешь узнать:\n"
+        "🌤 Погоду — напиши название города (например: `Kyiv`, `Berdyansk`, `Donetsk`, `Mariupol`).\n"
+        "📈 Цену акций — напиши тикер компании КАПСОМ (например: `AAPL`, `MSFT`, `AMZN`).\n\n"
+        "Жду твой запрос! 🙂"
     )
 
 
