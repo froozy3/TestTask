@@ -91,7 +91,7 @@ def log_to_sheet(message: str, user: str):
         "universe_domain": "googleapis.com",
     }
 
-    creds = ServiceAccountCredentials.from_json_keyfile_name(creds_dict, scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
 
     sheet = client.open("bot_logs").sheet1
