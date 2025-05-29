@@ -1,0 +1,6 @@
+python-telegram-bot==20.7
+python-dotenv==1.0.1
+httpx==0.27.0
+finnhub-python==2.4.17
+gspread==6.0.2
+oauth2client==4.1.3
