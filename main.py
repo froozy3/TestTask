@@ -87,7 +87,7 @@ def log_to_sheet(message: str, user: str):
         "type": "service_account",
         "project_id": "total-now-461220-q5",
         "private_key_id": os.getenv("PRIVATE_KEY_ID"),
-        "private_key": os.getenv("PRIVATE_KEY").replace("\\n", "\n"),
+        "private_key": os.getenv("PRIVATE_KEY"),
         "client_email": "sheets-writer@total-now-461220-q5.iam.gserviceaccount.com",
         "client_id": "107179566616802042151",
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
